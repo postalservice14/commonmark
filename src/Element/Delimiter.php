@@ -67,35 +67,11 @@ class Delimiter
     }
 
     /**
-     * @param boolean $canClose
-     *
-     * @return $this
-     */
-    public function setCanClose($canClose)
-    {
-        $this->canClose = $canClose;
-
-        return $this;
-    }
-
-    /**
      * @return boolean
      */
     public function canOpen()
     {
         return $this->canOpen;
-    }
-
-    /**
-     * @param boolean $canOpen
-     *
-     * @return $this
-     */
-    public function setCanOpen($canOpen)
-    {
-        $this->canOpen = $canOpen;
-
-        return $this;
     }
 
     /**
@@ -107,35 +83,11 @@ class Delimiter
     }
 
     /**
-     * @param String $char
-     *
-     * @return $this
-     */
-    public function setChar($char)
-    {
-        $this->char = $char;
-
-        return $this;
-    }
-
-    /**
      * @return int|null
      */
     public function getIndex()
     {
         return $this->index;
-    }
-
-    /**
-     * @param int|null $index
-     *
-     * @return $this
-     */
-    public function setIndex($index)
-    {
-        $this->index = $index;
-
-        return $this;
     }
 
     /**
@@ -184,18 +136,6 @@ class Delimiter
     public function getPos()
     {
         return $this->pos;
-    }
-
-    /**
-     * @param int $pos
-     *
-     * @return $this
-     */
-    public function setPos($pos)
-    {
-        $this->pos = $pos;
-
-        return $this;
     }
 
     /**
