@@ -139,22 +139,34 @@ class DelimiterStack
         while ($closer !== null) {
             if ($closer->canClose() && (in_array($closer->getChar(), $characters))) {
                 // Found emphasis closer. Now look back for first matching opener:
-                $opener = $closer->getPrevious();
-                while ($opener !== null && $opener !== $stackBottom) {
-                    if ($opener->getChar() === $closer->getChar() && $opener->canOpen()) {
-                        break;
-                    }
-                    $opener = $opener->getPrevious();
-                }
+                $opener = $this->findFirstMatchingOpener($closer, $stackBottom);
 
                 if ($opener !== null && $opener !== $stackBottom) {
                     $closer = $callback($opener, $closer, $this);
-                } else {
-                    $closer = $closer->getNext();
+                    continue;
                 }
-            } else {
-                $closer = $closer->getNext();
             }
+
+            $closer = $closer->getNext();
         }
+    }
+
+    /**
+     * @param Delimiter $closer
+     * @param Delimiter|null $stackBottom
+     *
+     * @return Delimiter|null
+     */
+    private function findFirstMatchingOpener(Delimiter $closer, Delimiter $stackBottom = null)
+    {
+        $opener = $closer->getPrevious();
+        while ($opener !== null && $opener !== $stackBottom) {
+            if ($opener->getChar() === $closer->getChar() && $opener->canOpen()) {
+                break;
+            }
+            $opener = $opener->getPrevious();
+        }
+
+        return $opener;
     }
 }
