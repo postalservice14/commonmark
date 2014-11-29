@@ -94,7 +94,7 @@ class InlineCreator
      *
      * @return array
      */
-    private static function createLinkedResourceAttributes($destination, $label = null, $title = null)
+    protected static function createLinkedResourceAttributes($destination, $label = null, $title = null)
     {
         $attr = array('destination' => $destination);
 
